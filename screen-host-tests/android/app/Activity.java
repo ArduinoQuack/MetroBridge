@@ -1,0 +1,1 @@
+package android.app;import android.content.*;import android.view.*;public class Activity extends Context {ComponentName component;Window w;public Activity(Application a,String n){app=a;component=new ComponentName(n);w=new Window(this);}public ComponentName getComponentName(){return component;}public Window getWindow(){return w;}}
