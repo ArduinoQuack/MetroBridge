@@ -1,0 +1,1 @@
+package android.content;import android.os.Bundle;public class ContentResolver {public static boolean enabled,fail;public Bundle call(Object uri,String method,String a,Bundle in){if(fail)throw new SecurityException();Bundle b=new Bundle();b.allow=enabled;return b;}}
