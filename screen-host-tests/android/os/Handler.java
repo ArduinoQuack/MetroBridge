@@ -1,0 +1,1 @@
+package android.os;import java.util.*;public class Handler {static List<Runnable> q=new ArrayList<>();public Handler(Looper l){}public void post(Runnable r){q.add(r);}public static void run(){while(!q.isEmpty())q.remove(0).run();}}
