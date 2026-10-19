@@ -1,0 +1,1 @@
+package dev.metrobridge.poc;import android.content.*;class VoiceConfirmation {static boolean voice=true;static boolean enabled(Context c){return voice;}static void signal(Context c){if(ForegroundHandoff.take(c))try{c.startActivity(new Intent());}catch(Throwable e){}}}
