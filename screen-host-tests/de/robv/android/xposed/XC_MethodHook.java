@@ -1,0 +1,1 @@
+package de.robv.android.xposed;public class XC_MethodHook {public class Unhook {public void unhook(){XposedBridge.hooks.values().remove(XC_MethodHook.this);}}public static class MethodHookParam {public Object thisObject;public Object[] args;}protected void beforeHookedMethod(MethodHookParam p)throws Throwable{}}
