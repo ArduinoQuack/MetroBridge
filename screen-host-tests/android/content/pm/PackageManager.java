@@ -1,0 +1,1 @@
+package android.content.pm;public class PackageManager {public static class ApplicationInfo {public int uid=42;}public ApplicationInfo getApplicationInfo(String n,int f){return new ApplicationInfo();}}
