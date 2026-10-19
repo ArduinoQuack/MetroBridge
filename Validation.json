@@ -1,0 +1,46 @@
+{
+  "version": "0.21",
+  "versionCode": 21,
+  "apkSHA256": "8556e83335a49185e6c6466fcc81c4757bfa4ed9c651d6cfbb370a7f5ab8f280",
+  "signerSHA256": "3cedb394a29f13f38bd61b288d16bafdc1be55193e8257ed95acb5e66e6aa9e0",
+  "hostChecks": 379,
+  "hostBreakdown": {
+    "logic": 336,
+    "actualForegroundWithHostDoubles": 19,
+    "actualScreenHookWithHostDoubles": 24
+  },
+  "removed": [
+    "Phase capture/storage/export and shell support endpoints",
+    "AudioTrack/native-synthesis observation hooks",
+    "Diagnostic IPC payloads, formatter and no-op logging wrappers",
+    "Legacy action/test activities; only module settings activity remains",
+    "Private old diagnostic preferences, via one-time migration"
+  ],
+  "preserved": [
+    "Same package and signing key for in-place upgrades",
+    "Saved settings, templates and library cache",
+    "Native playlist/shuffle/Play next path and queue invariants",
+    "Native Google confirmation, success correlation, duplicate-job protection and speech completion callback",
+    "Signed Google visibility and foreground handshakes",
+    "Opt-in normal screen-timeout setting and native toggle-off restoration",
+    "Bounded inline last-request error for ordinary failures"
+  ],
+  "checks": [
+    "Fresh Android36 compile/D8/aapt2 passed",
+    "Same-key APK signature and zip alignment passed",
+    "Final manifest/DEX verifier passed: no permissions/services/launcher, support classes/endpoints, MediaStore exporter or AudioTrack observer",
+    "379 host checks passed; source-only Android/Xposed doubles excluded from APK"
+  ],
+  "deviceEvidence": [
+    "Owner confirmed0.19 integrated music/native voice working",
+    "Screen-timeout setting introduced0.20; no independent measured idle result supplied",
+    "Clean0.21 APK not tested on the physical phone here"
+  ],
+  "limits": [
+    "Private app profiles remain pinned to inspected versions/signatures",
+    "Lock-screen, display-timeout and long-response continuity subject to Android/Google behavior",
+    "No compound command, append-to-end or broader conversation/history implementation"
+  ],
+  "install": "Install over current with data/scopes retained; reload Google only using README LADB block. No root grant, reboot, MetroList restart or data clearing required for this cleanup.",
+  "rollback": "Disable feature/master toggle or module; reload Google. For full native queue-hook unload, remove MetroList scope and restart MetroList after saving/stopping playback."
+}

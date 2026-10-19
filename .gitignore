@@ -1,0 +1,15 @@
+/build/
+/.signing/
+/MetroBridge.apk
+*.class
+*.jks
+*.keystore
+*.p12
+*.apk
+*.apks
+*.dex
+*.tar
+*.zip
+__pycache__/
+local.properties
+.env
