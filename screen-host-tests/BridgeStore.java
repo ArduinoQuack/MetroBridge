@@ -1,0 +1,1 @@
+package dev.metrobridge.poc;import android.content.Context;class BridgeStore {static final String GOOGLE="com.google.android.googlequicksearchbox";static final Object URI=new Object();static boolean signature=true;static boolean signedBy(Context c,String p,String s){return signature;}}
