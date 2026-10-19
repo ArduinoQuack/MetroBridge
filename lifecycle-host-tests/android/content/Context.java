@@ -1,0 +1,1 @@
+package android.content;import android.content.pm.PackageManager;public class Context {public int opened;public boolean deny;public Context getApplicationContext(){return this;}public PackageManager getPackageManager(){return new PackageManager();}public void startActivity(Intent i){if(deny)throw new SecurityException();opened++;}}
