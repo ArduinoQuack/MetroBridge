@@ -1,0 +1,1 @@
+package android.view;public class Window {public View decor=new View();public WindowManager.LayoutParams attrs=new WindowManager.LayoutParams();public Window(android.app.Activity a){}public View peekDecorView(){return decor;}public WindowManager getWindowManager(){return new WindowManager();}public WindowManager.LayoutParams getAttributes(){return attrs;}}
