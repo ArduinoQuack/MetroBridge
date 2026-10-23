@@ -1,5 +1,13 @@
 # Build MetroBridge
 
+## Current release: 0.33
+
+Download `MetroBridge-0.33-source.zip` from [the release](https://github.com/ArduinoQuack/MetroBridge/releases/tag/v0.33) and extract it. Follow its README and run its `build.sh` and `test.sh`. It includes the 0.33 discovery sources, tests and exact MetroBridge 0.32 inputs used for the incremental build. Those inputs are MetroBridge’s own files; Google APKs and private signing keys are not included.
+
+The root `src/` and root build scripts below are the earlier 0.21 full-source release. Running the root build does not produce 0.33. Keep the signing-key caveats below in mind when using the current build, too.
+
+## Earlier full-source build: 0.21
+
 The prebuilt release is on [GitHub Releases](https://github.com/ArduinoQuack/MetroBridge/releases/latest). Building is useful for reviewed compatibility changes or a different Morphe signing certificate.
 
 ## Dependencies
