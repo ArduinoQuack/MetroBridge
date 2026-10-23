@@ -1,3 +1,16 @@
+# Current release checks (0.33)
+
+- 30 reflection, discovery-voting and cache regression checks.
+- 29 submitted Play next routing and failure checks with host doubles.
+- 49 required type roles and 62 critical native field/method bindings checked against Google 17.68.17 and 17.69.19.
+- 4,039 original mapping assertions against the older APK.
+- APK signature/alignment checks; existing playback, queue and speech class bodies unchanged from 0.32.
+- APK reported working by the maintainer on a Galaxy S24+ with Android 16 and Vector. Other devices and future updates remain unverified.
+
+Current tests and build details are in the [0.33 source bundle](https://github.com/ArduinoQuack/MetroBridge/releases/tag/v0.33). The release source archive contains the baseline build inputs. The earlier checks below describe 0.21.
+
+---
+
 # Verification
 
 The owner confirmed playlist/shuffle, queue insertion and native spoken confirmation working in the0.19 integration. The optional timeout feature was added in0.20; no independent measured idle-timeout result has been supplied.0.21 is a cleanup release, not a new command implementation.

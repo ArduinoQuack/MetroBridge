@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.33
+
+- Fix Google update compatibility so MetroBridge catches music requests again.
+- Fix input-hook discovery choosing the wrong coroutine.
+- Discard stale compatibility caches and keep unrelated hook failures from blocking startup.
+- Use runtime discovery instead of a Google-version allowlist. Google updates can still break it.
+
 ## 0.21
 
 - Remove temporary phase capture/export, shell support endpoints and audio observation hooks.

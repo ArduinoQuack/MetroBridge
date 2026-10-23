@@ -1,3 +1,13 @@
+# Current Google hook discovery (0.33)
+
+Google hook names are resolved from the installed APK using method evidence, typed field relationships and hashed property labels. Discovery is cached against APK identity and reference bytes; an update invalidates the cache. Conflicting or missing roles are left disabled. Adaptive startup is isolated from public hook installation.
+
+This removes the Google-version allowlist used by the earlier build. It still depends on private Google behavior and can break after an update. The current code and checks are in the [0.33 source bundle](https://github.com/ArduinoQuack/MetroBridge/releases/tag/v0.33).
+
+The original playback/queue architecture is documented below; version-specific details describe the older implementation.
+
+---
+
 # Architecture
 
 ## Routing and authorization

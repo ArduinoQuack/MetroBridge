@@ -8,7 +8,7 @@
 
 [**Download APK**](https://github.com/ArduinoQuack/MetroBridge/releases/latest/download/MetroBridge.apk) · [Setup](#setup) · [Example prompts](#example-prompts) · [Compatibility](#compatibility) · [Troubleshooting](#troubleshooting) · [Build](docs/BUILDING.md)
 
-> **Compatibility first:** this is a device-tested integration for the app builds and signing profile listed below. Renaming MetroList is a prerequisite, not a guarantee that every Google/MetroList version or signing key will work.
+> **Heads up: this is fragile.** MetroBridge hooks private parts of the Google app. Google updates can break playback, Play next or spoken replies, sometimes without an obvious error. Automatic hook discovery helps, but it does not make this update-proof. Root and LSPosed/Vector are required. If an update breaks it, disable MetroBridge until there is a fix.
 
 ## Features
 
@@ -140,9 +140,9 @@ Templates are validated plain text, limited to 300 input and 400 rendered charac
 | Component | Inspected/tested profile |
 |---|---|
 | Device | Samsung Galaxy S24+ SM-S926U, Android 16 |
-| Google app | 17.67.17.ve.arm64 / 301822338; 17.68.17.ve.arm64 / 301824130 |
+| Google app | 17.69.19.ve.arm64 / 301825986; discovery also checked against 17.68.17.ve.arm64 / 301824130 |
 | MetroList | 13.6.1, renamed package and matching signing certificate |
-| Module | 0.21; native music/voice behavior confirmed working in 0.19 |
+| Module | 0.33, confirmed working on the maintainer’s phone |
 
 The included MetroList certificate profile is:
 
@@ -150,7 +150,7 @@ The included MetroList certificate profile is:
 b8bb9a23a9b8ddbfa269b8a4ecd87d0e2c88bbb37edb72a7599732b411fb031a
 ```
 
-This is a public certificate fingerprint, not a private key. Different patching keys require a matching module build. Newer Google/MetroList versions are not automatically supported: private hooks check versions and runtime schemas and disable incompatible paths safely. This is not a universal, update-proof provider integration.
+This is a public certificate fingerprint, not a private key. Different patching keys require a matching module build. Google hooks are discovered from the installed APK rather than selected from a Google-version allowlist. The runtime checks class and member relationships and leaves unresolved hooks disabled. A future Google update can still change those relationships enough to break the integration. MetroList still requires a compatible build and signing certificate.
 
 ## Limitations
 
@@ -170,15 +170,15 @@ This is a public certificate fingerprint, not a private key. Different patching 
 | Gemini asks to install YouTube Music | Exact package name, Gemini connection and supported link routing. Renaming does not implement Google's full provider protocol. |
 | Playlist is missing or renamed | Refresh playlists in MetroBridge settings. |
 | Play next does nothing | Module enabled in both scopes, Play next enabled, supported versions and trusted MetroList certificate. Reopen MetroList after the first scope change. |
-| Voice is unchanged | Spoken confirmations enabled, supported Google version, separate Voice Test disabled; reload Google after module updates. Visible text is expected to remain unchanged. |
+| Voice is unchanged | Spoken confirmations enabled, compatible Google hooks, separate Voice Test disabled; reload Google after module updates. Visible text is expected to remain unchanged. |
 | Screen stays awake | Enable Allow normal screen timeout, reload Google after installation, and check whether an independent video/view/OS policy is active. |
-| A later update stops working | Check the compatibility table; keep the last working versions or wait for an inspected module update. |
+| A later update stops working | Check the compatibility table; disable MetroBridge and check Releases for a fix. |
 
 Normal failures retain a bounded last-request message in settings. Debug capture/report tools are intentionally absent from the release.
 
 ## Updates
 
-MetroBridge updates independently of Google and MetroList; Google is never repacked for this module. **The MetroList package rename is still an APK-level preparation step:** a replacement MetroList APK must be patched with Morphe again using the same package name and signing key. Preserve your Morphe keystore. A new app version may also require an updated compatibility profile.
+MetroBridge updates independently of Google and MetroList; Google is never repacked for this module. **The MetroList package rename is still an APK-level preparation step:** a replacement MetroList APK must be patched with Morphe again using the same package name and signing key. Preserve your Morphe keystore. A new app version may still require a module update.
 
 ## Rollback
 
@@ -190,7 +190,7 @@ No bootloader unlock, firmware flash, system-partition write or Knox modificatio
 
 [Build instructions](docs/BUILDING.md) · [Architecture](ARCHITECTURE.md) · [Tests](TESTING.md) · [Changelog](CHANGELOG.md) · [Validation metadata](Validation.json)
 
-The clean release passed 379 host checks, fresh Android 36 compilation, signing/alignment and manifest/DEX scans. Host tests are not proof of physical display behavior or every assistant command. The repository contains source and isolated host doubles, not private signing keys, account data, supplied Google APKs or repacked MetroList binaries.
+For 0.33, 59 host checks passed and critical hook bindings were checked against both supplied Google APKs. The maintainer confirmed the APK works on their phone. That does not establish compatibility with every device or future update. The [0.33 release source bundle](https://github.com/ArduinoQuack/MetroBridge/releases/tag/v0.33) includes the current changes, tests and inputs needed for the incremental build. The root source tree is the earlier 0.21 release. Private signing keys, account data and supplied third-party APKs are excluded.
 
 ## Credits and license
 
