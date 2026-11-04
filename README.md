@@ -140,9 +140,9 @@ Templates are validated plain text, limited to 300 input and 400 rendered charac
 | Component | Inspected/tested profile |
 |---|---|
 | Device | Samsung Galaxy S24+ SM-S926U, Android 16 |
-| Google app | 17.69.19.ve.arm64 / 301825986; discovery also checked against 17.68.17.ve.arm64 / 301824130 |
+| Google app | 17.72.13.ve.arm64 / 301831010; discovery also checked against 17.68.17 and 17.69.19 |
 | MetroList | 13.6.1, renamed package and matching signing certificate |
-| Module | 0.33, confirmed working on the maintainer’s phone |
+| Module | 0.34, confirmed working on the maintainer’s phone |
 
 The included MetroList certificate profile is:
 
@@ -190,7 +190,7 @@ No bootloader unlock, firmware flash, system-partition write or Knox modificatio
 
 [Build instructions](docs/BUILDING.md) · [Architecture](ARCHITECTURE.md) · [Tests](TESTING.md) · [Changelog](CHANGELOG.md) · [Validation metadata](Validation.json)
 
-For 0.33, 59 host checks passed and critical hook bindings were checked against both supplied Google APKs. The maintainer confirmed the APK works on their phone. That does not establish compatibility with every device or future update. The [0.33 release source bundle](https://github.com/ArduinoQuack/MetroBridge/releases/tag/v0.33) includes the current changes, tests and inputs needed for the incremental build. The root source tree is the earlier 0.21 release. Private signing keys, account data and supplied third-party APKs are excluded.
+For 0.34, 74 host checks passed and 63 critical hook contracts were checked against three Google APKs. The maintainer confirmed the APK works on their phone. That does not establish compatibility with every device or future update. The [0.34 release source bundle](https://github.com/ArduinoQuack/MetroBridge/releases/tag/v0.34) includes the current changes, tests and inputs needed for the incremental build. The root source tree is the earlier 0.21 release. Private signing keys, account data and supplied third-party APKs are excluded.
 
 ## Credits and license
 
@@ -199,3 +199,4 @@ Created by [ArduinoQuack](https://github.com/ArduinoQuack). Package-preparation 
 Thanks to [MetroList](https://github.com/MetrolistGroup/Metrolist), [Morphe](https://github.com/MorpheApp/morphe-manager) and [LSPosed](https://github.com/LSPosed/LSPosed). This is an independent project, not an official Google, MetroList or Morphe integration.
 
 MetroBridge source is available under the [MIT license](LICENSE). Referenced projects retain their own licenses and trademarks.
+

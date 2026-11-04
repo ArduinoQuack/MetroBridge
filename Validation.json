@@ -1,31 +1,26 @@
 {
-  "moduleVersion": "0.33",
-  "sha256": "18dd9a859058f5dd4d1df942fc19e75f94372c50cf5bb54410a713812b7c3790",
-  "certificateSha256": "3cedb394a29f13f38bd61b288d16bafdc1be55193e8257ed95acb5e66e6aa9e0",
-  "actualApkValidation": [
-    {
-      "googleVersion": "17.69.19.ve.arm64",
-      "roles": 49,
-      "totalRoles": 49,
-      "criticalNativeBindings": 62,
-      "conflicts": 0
-    },
-    {
-      "googleVersion": "17.68.17.ve.arm64",
-      "roles": 49,
-      "totalRoles": 49,
-      "criticalNativeBindings": 62,
-      "originalMappingAssertions": 4039,
-      "conflicts": 0
-    }
+  "moduleVersion": "0.34",
+  "googleApkInspected": "17.72.13.ve.arm64 (301831010)",
+  "regressionApks": [
+    "17.68.17",
+    "17.69.19",
+    "17.72.13"
   ],
-  "hostTests": {
-    "adaptiveReflectionCache": 30,
-    "submittedQueue": 29
-  },
-  "deviceTested": false,
-  "manifestComponentsAndPermissionsUnchanged": true,
-  "existingPlaybackQueueSpeechClassesUnchanged": true,
-  "deviceOwnerConfirmedWorking": true,
-  "independentlyDeviceTested": false
+  "requiredRoles": 50,
+  "criticalNativeBindingsPerApk": 63,
+  "hostRegressionChecks": 74,
+  "physicallyDeviceTested": false,
+  "signerSha256": "3cedb394a29f13f38bd61b288d16bafdc1be55193e8257ed95acb5e66e6aa9e0",
+  "apkSha256": "576b9229bf2aa34064d6e1835057d9e8d58241bbe8651b7ee9dd6b079c7dfcb7",
+  "unchangedManifest": true,
+  "changedClassBodies": [
+    "Ldev/metrobridge/poc/DexDiscovery$$ExternalSyntheticLambda10;",
+    "Ldev/metrobridge/poc/DexDiscovery$$ExternalSyntheticLambda7;",
+    "Ldev/metrobridge/poc/DexDiscovery$$ExternalSyntheticLambda8;",
+    "Ldev/metrobridge/poc/DexDiscovery$$ExternalSyntheticLambda9;",
+    "Ldev/metrobridge/poc/GoogleReplyVoice;",
+    "Ldev/metrobridge/poc/MainActivity;",
+    "Ldev/metrobridge/poc/SpeechSchema;"
+  ],
+  "deviceOwnerConfirmedWorking": true
 }

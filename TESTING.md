@@ -1,13 +1,14 @@
-# Current release checks (0.33)
+# Current release checks (0.34)
 
 - 30 reflection, discovery-voting and cache regression checks.
+- 15 native speech parameter, context-preservation and ambiguity checks.
 - 29 submitted Play next routing and failure checks with host doubles.
-- 49 required type roles and 62 critical native field/method bindings checked against Google 17.68.17 and 17.69.19.
-- 4,039 original mapping assertions against the older APK.
-- APK signature/alignment checks; existing playback, queue and speech class bodies unchanged from 0.32.
+- 50 required type roles and 63 critical native field/method contracts checked against Google 17.68.17, 17.69.19 and 17.72.13.
+- 4,047 original mapping assertions against the older APK.
+- APK signature/alignment checks; playback and queue class bodies unchanged from 0.33; speech changes limited to the compatibility adapter.
 - APK reported working by the maintainer on a Galaxy S24+ with Android 16 and Vector. Other devices and future updates remain unverified.
 
-Current tests and build details are in the [0.33 source bundle](https://github.com/ArduinoQuack/MetroBridge/releases/tag/v0.33). The release source archive contains the baseline build inputs. The earlier checks below describe 0.21.
+Current tests and build details are in the [0.34 source bundle](https://github.com/ArduinoQuack/MetroBridge/releases/tag/v0.34). The release source archive contains the baseline build inputs. The earlier checks below describe 0.21.
 
 ---
 
@@ -52,3 +53,4 @@ Install over the current same-signed app, retain settings/scopes, keep the separ
 | Device restart | Requires root/LSPosed to be available again; no restart is needed for installation |
 
 Use normal module settings and LSPosed's own module status for troubleshooting. Development capture/export commands and test activities are intentionally absent from this release. Refer to README for rollback.
+

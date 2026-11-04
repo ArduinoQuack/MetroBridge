@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.34
+
+- Fix playback requests and spoken replies after the Google 17.72 update.
+- Fix reply-ID discovery and handle the changed speech calls.
+
+
 ## 0.33
 
 - Fix Google update compatibility so MetroBridge catches music requests again.
@@ -24,3 +30,4 @@
 - Execute music actions without opening a companion window over Gemini.
 - Protect the native confirmation from duplicate same-reply jobs.
 - Coordinate MetroList foregrounding with native speech completion.
+

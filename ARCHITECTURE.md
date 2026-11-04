@@ -1,8 +1,8 @@
-# Current Google hook discovery (0.33)
+# Current Google hook discovery (0.34)
 
 Google hook names are resolved from the installed APK using method evidence, typed field relationships and hashed property labels. Discovery is cached against APK identity and reference bytes; an update invalidates the cache. Conflicting or missing roles are left disabled. Adaptive startup is isolated from public hook installation.
 
-This removes the Google-version allowlist used by the earlier build. It still depends on private Google behavior and can break after an update. The current code and checks are in the [0.33 source bundle](https://github.com/ArduinoQuack/MetroBridge/releases/tag/v0.33).
+This removes the Google-version allowlist used by the earlier build. It still depends on private Google behavior and can break after an update. The current code and checks are in the [0.34 source bundle](https://github.com/ArduinoQuack/MetroBridge/releases/tag/v0.34).
 
 The original playback/queue architecture is documented below; version-specific details describe the older implementation.
 
@@ -47,3 +47,4 @@ Only FLAG_KEEP_SCREEN_ON is removed from the submitted copy. Google's original W
 Private Google profiles are exact version/code mappings with runtime type/member checks; MetroList has a version/signature and structural native-bridge guard. Unknown private interfaces disable rather than guessing offsets or bypassing authentication. Future compatibility is not guaranteed.
 
 0.21 removes development-only exporters, phase counters, audio observations, shell report endpoints, empty logging wrappers and legacy action activities. A one-time settings migration deletes private diagnostic keys without clearing the library, templates or preferences. User-created external reports are not deleted. Only normal bounded last-request errors remain in settings.
+
