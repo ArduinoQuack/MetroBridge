@@ -1,10 +1,10 @@
 # Build MetroBridge
 
-## Current release: 0.33
+## Current release: 0.34
 
-Download `MetroBridge-0.33-source.zip` from [the release](https://github.com/ArduinoQuack/MetroBridge/releases/tag/v0.33) and extract it. Follow its README and run its `build.sh` and `test.sh`. It includes the 0.33 discovery sources, tests and exact MetroBridge 0.32 inputs used for the incremental build. Those inputs are MetroBridge’s own files; Google APKs and private signing keys are not included.
+Download `MetroBridge-0.34-source.zip` from [the release](https://github.com/ArduinoQuack/MetroBridge/releases/tag/v0.34) and extract it. Follow its README and run its `build.sh` and `test.sh`. It includes the 0.34 discovery sources, tests and exact MetroBridge 0.33 inputs used for the incremental build. Those inputs are MetroBridge’s own files; Google APKs and private signing keys are not included.
 
-The root `src/` and root build scripts below are the earlier 0.21 full-source release. Running the root build does not produce 0.33. Keep the signing-key caveats below in mind when using the current build, too.
+The root `src/` and root build scripts below are the earlier 0.21 full-source release. Running the root build does not produce 0.34. Keep the signing-key caveats below in mind when using the current build, too.
 
 ## Earlier full-source build: 0.21
 
@@ -73,3 +73,4 @@ python3 Verify-release.py MetroBridge.apk
 The clean release passed 336 logic checks plus 19 actual foreground-adapter and 24 actual screen-hook checks with source-only host Android/Xposed doubles. The doubles are compiled separately and never shipped in the APK. Source verifiers accepting a Google/MetroList APK path are for developer use; keep those APKs outside commits.
 
 See [TESTING.md](../TESTING.md) for device smoke tests and [ARCHITECTURE.md](../ARCHITECTURE.md) for hook boundaries.
+
