@@ -21,6 +21,5 @@
     "Ldev/metrobridge/poc/GoogleReplyVoice;",
     "Ldev/metrobridge/poc/MainActivity;",
     "Ldev/metrobridge/poc/SpeechSchema;"
-  ],
-  "deviceOwnerConfirmedWorking": true
+  ]
 }

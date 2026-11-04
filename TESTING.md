@@ -6,7 +6,7 @@
 - 50 required type roles and 63 critical native field/method contracts checked against Google 17.68.17, 17.69.19 and 17.72.13.
 - 4,047 original mapping assertions against the older APK.
 - APK signature/alignment checks; playback and queue class bodies unchanged from 0.33; speech changes limited to the compatibility adapter.
-- APK reported working by the maintainer on a Galaxy S24+ with Android 16 and Vector. Other devices and future updates remain unverified.
+- Automated checks cover the inspected APKs. Compatibility with other devices and future updates remains unverified.
 
 Current tests and build details are in the [0.34 source bundle](https://github.com/ArduinoQuack/MetroBridge/releases/tag/v0.34). The release source archive contains the baseline build inputs. The earlier checks below describe 0.21.
 
