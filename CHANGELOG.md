@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.36
+
+- Add MetroList 14.0.0 support, including its new playback service, playlist IDs and queue API.
+- Update playlist refresh, shuffle and song search for the new app.
+- Include immediate song playback from 0.35: “Play [song]” switches to it and keeps the queue; “Play [song] next” still inserts next.
+
+Keep the same Morphe signing key and YouTube Music package name. After updating, restart Google and MetroList and refresh playlists.
+
+Root and LSPosed/Vector are required. This is still fragile: Google or MetroList updates can break it. Checked against the supplied APK and host tests; phone playback is not yet confirmed for this build.
+
 ## 0.34
 
 - Fix playback requests and spoken replies after the Google 17.72 update.
