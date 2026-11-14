@@ -1,10 +1,10 @@
 # Build MetroBridge
 
-## Current release: 0.34
+## Current release: 0.36
 
-Download `MetroBridge-0.34-source.zip` from [the release](https://github.com/ArduinoQuack/MetroBridge/releases/tag/v0.34) and extract it. Follow its README and run its `build.sh` and `test.sh`. It includes the 0.34 discovery sources, tests and exact MetroBridge 0.33 inputs used for the incremental build. Those inputs are MetroBridge’s own files; Google APKs and private signing keys are not included.
+Download `MetroBridge-0.36-source.zip` from [the release](https://github.com/ArduinoQuack/MetroBridge/releases/tag/v0.36) and extract it. Follow its README and run its `build.sh` and `test.sh`. It includes the MetroList 14 adapter, tests and exact MetroBridge 0.35 inputs used for the incremental build. Run `python3 verify.py` after the build and host tests. To repeat the app interface checks, run `python3 audit-metro.py /path/to/decoded-metrolist`. Those inputs are MetroBridge’s own files; Google APKs and private signing keys are not included.
 
-The root `src/` and root build scripts below are the earlier 0.21 full-source release. Running the root build does not produce 0.34. Keep the signing-key caveats below in mind when using the current build, too.
+The root `src/` and root build scripts below are the earlier 0.21 full-source release. Running the root build does not produce 0.36. Keep the signing-key caveats below in mind when using the current build, too.
 
 ## Earlier full-source build: 0.21
 
@@ -35,6 +35,9 @@ Output: `MetroBridge.apk`. The script generates `.signing/probe.jks` on a fresh 
 The published APK uses the maintainer's existing private key. That key is intentionally not distributed. If you switch from the published APK to a differently signed self-build, Android treats it as a signing conflict; preserve your settings before replacing an installation.
 
 ## Use your own Morphe signing certificate
+
+For the 0.36 incremental bundle, the MetroList certificate is in `source/dev/metrobridge/poc/MetroEndpoints.java`. The earlier build commands below apply to the root 0.21 tree. A different module signing key also requires updating native callback authentication in NativeQueueBridge; changing only the MetroList certificate is not enough for a separately signed module.
+
 
 MetroBridge validates MetroList's UID, version and signing certificate. Renaming an APK does not make a different certificate match the included profile.
 
