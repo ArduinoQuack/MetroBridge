@@ -1,6 +1,6 @@
 # MetroBridge
 
-**Control MetroList with Gemini.** Play local playlists, shuffle your music, and queue a song next without replacing the queue you are listening to.
+**Control MetroList with Gemini.** Play local playlists, shuffle your music, and play a song now or next without replacing your current queue.
 
 [![Release](https://img.shields.io/github/v/release/ArduinoQuack/MetroBridge)](https://github.com/ArduinoQuack/MetroBridge/releases/latest)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
@@ -14,6 +14,7 @@
 
 - **Local playlist playback:** resolve names against your cached MetroList library, including approximate name matching.
 - **Functional playlist shuffle:** request shuffle explicitly or make it the default for playlist requests.
+- **Play a song now:** switch to a requested song while keeping the queue, shuffle and repeat. An already queued song is reused.
 - **Play next without losing the queue:** search for a song and insert it immediately after the current track. Preserve the current song, playback position within tolerance, other queued tracks, shuffle and repeat.
 - **Current-song references:** “Play this song next” uses the current media session.
 - **Automatic selection:** choose the best available song match, with a first-valid-result fallback. No module chooser popups.
@@ -33,6 +34,7 @@ Say “Hey Google” first, or activate Gemini using your usual shortcut.
 | “Play my Rap playlist.” | Start the matching local playlist. |
 | “Shuffle my Pop playlist.” | Start that playlist with native shuffle. |
 | “Play my Workout playlist shuffled.” | Start the requested playlist in random order. |
+| “Play Lose Yourself by Eminem.” | Switch to that song and keep the existing queue. |
 | “Play Lose Yourself by Eminem next.” | Insert the selected song next, keeping current playback and the remaining queue. |
 | “Play this song next.” | Insert the current media-session song next. |
 | “Pause music.” / “Resume music.” | Use existing Gemini/MetroList playback controls. |
@@ -40,7 +42,7 @@ Say “Hey Google” first, or activate Gemini using your usual shortcut.
 
 **Use separate requests:** “Shuffle my Rap playlist”, then “Play Lose Yourself by Eminem next”. A single compound request combining both is not implemented.
 
-Default spoken replies are **“Playing Rap”** and **“Playing Lose Yourself by Eminem next”**. Gemini's visible/cloud response text is not rewritten.
+Default spoken replies are **“Playing Rap”**, **“Playing Lose Yourself by Eminem”** and **“Playing Lose Yourself by Eminem next”**. Gemini's visible/cloud response text is not rewritten.
 
 ## Requirements
 
@@ -59,7 +61,7 @@ Already using MetroList under YouTube Music's package name? Skip to [Install Met
 The original setup guide is [my Reddit post as u/androidforthewin](https://www.reddit.com/r/metrolist/comments/1tnnm1c/guide_how_to_get_gemini_to_play_songs_on_metrolist/) in r/metrolist. This repository uses Morphe instructions throughout, with current patch names.
 
 1. Back up your MetroList library/settings and your [Morphe signing keystore](https://github.com/MorpheApp/morphe-manager/blob/main/docs/backup-and-keystore.md).
-2. Install [Morphe Manager](https://morphe.software/) and download the supported [MetroList 13.6.1 APK](https://github.com/MetrolistGroup/Metrolist/releases/tag/v13.6.1).
+2. Install [Morphe Manager](https://morphe.software/) and download the supported [MetroList 14.0.0 APK](https://github.com/MetrolistGroup/Metrolist/releases/tag/v14.0.0).
 3. Enable **Settings → Advanced → Expert settings → Expert mode** in Morphe. Older releases may place Expert mode directly under Settings.
 4. Choose the MetroList APK through **Other apps** or the APK file picker.
 5. Select the universal **Clone app** patch, called **Change package name** in older versions. Open its settings/gear and set **Package name** to exactly:
@@ -106,13 +108,15 @@ The app is hidden from the launcher. Settings can also be opened using LADB:
 am start -n dev.metrobridge.poc/.MainActivity
 ```
 
+**Updating to MetroList 14.0.0:** keep your existing Morphe signing key, install MetroBridge 0.36, stop music and force-stop both Google and MetroList once, then reopen them and refresh playlists in MetroBridge settings. Back up MetroList before its database migration.
+
 ### 3. Customize
 
 | Setting | Purpose |
 |---|---|
 | Enable integration | Master switch. |
 | Shuffle playlists | Shuffle playlist requests by default. |
-| Play next | Enable single-song queue insertion. |
+| Play next | Enable single-song playback now or insertion next. |
 | Spoken confirmations | Announce successful actions through Google's native speech path. |
 | Allow normal screen timeout | Opt-in Gemini window policy using your existing screen timeout. |
 | Custom wording | Edit playlist and Play next confirmations. |
@@ -133,6 +137,8 @@ Queued {song}{by_artist} {position}
 | `{action}`, `{position}`, `{queue_size}`, `{shuffle}`, `{app}` | Action and verified playback/queue context where available. |
 | `{by_artist}`, `{from_album}` | Optional complete phrases such as “ by Eminem”; empty when metadata is missing. |
 
+For immediate song playback, the existing song template drops literal “next”, uses “now” for `{position}` and “Playing” for `{action}`. Song and artist names are kept intact.
+
 Templates are validated plain text, limited to 300 input and 400 rendered characters. Unknown metadata is left empty.
 
 ## Compatibility
@@ -141,8 +147,8 @@ Templates are validated plain text, limited to 300 input and 400 rendered charac
 |---|---|
 | Device | Samsung Galaxy S24+ SM-S926U, Android 16 |
 | Google app | 17.72.13.ve.arm64 / 301831010; discovery also checked against 17.68.17 and 17.69.19 |
-| MetroList | 13.6.1, renamed package and matching signing certificate |
-| Module | 0.34 |
+| MetroList | 14.0.0 (154) and 13.6.1 (150), renamed package and matching signing certificate |
+| Module | 0.36 |
 
 The included MetroList certificate profile is:
 
@@ -154,7 +160,7 @@ This is a public certificate fingerprint, not a private key. Different patching 
 
 ## Limitations
 
-- Named-playlist, shuffle and single-song Play next are the implemented focus. [Full command coverage](SUPPORTED-COMMANDS.md) distinguishes these from existing media controls.
+- Named-playlist, shuffle and single-song playback now or next are the implemented focus. [Full command coverage](SUPPORTED-COMMANDS.md) distinguishes these from existing media controls.
 - Append-to-end, queue editing, aggregate liked/downloaded/recent collections, advanced history/artist/album requests and compound commands are not implemented.
 - Automatic matching can choose an unintended result when names or Google links are ambiguous. There is no chooser fallback; empty/unusable results do not create fabricated content.
 - Some non-English playlist matching remains unresolved.
@@ -190,7 +196,7 @@ No bootloader unlock, firmware flash, system-partition write or Knox modificatio
 
 [Build instructions](docs/BUILDING.md) · [Architecture](ARCHITECTURE.md) · [Tests](TESTING.md) · [Changelog](CHANGELOG.md) · [Validation metadata](Validation.json)
 
-For 0.34, 74 host checks passed and 63 critical hook contracts were checked against three Google APKs. These checks do not establish compatibility with every device or future update. The [0.34 release source bundle](https://github.com/ArduinoQuack/MetroBridge/releases/tag/v0.34) includes the current changes, tests and inputs needed for the incremental build. The root source tree is the earlier 0.21 release. Private signing keys, account data and supplied third-party APKs are excluded.
+For 0.36, 172 host checks and 48 MetroList APK interface checks passed. Playback on the phone has not yet been confirmed for this build. The [0.36 source bundle](https://github.com/ArduinoQuack/MetroBridge/releases/tag/v0.36) contains the changes, tests and preceding inputs for the incremental build. The root source tree is the earlier 0.21 release. Private signing keys, account data and supplied third-party APKs are excluded.
 
 ## Credits and license
 
