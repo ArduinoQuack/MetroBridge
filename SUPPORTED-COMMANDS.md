@@ -4,12 +4,13 @@
 |---|---|
 | Play my Rap/Pop/Workout playlist | Cached local playlist-name resolution; refresh after library changes |
 | Shuffle my Rap playlist / play Pop shuffled | Native playlist shuffle; optional default shuffle |
+| Play Lose Yourself by Eminem | Switch to the song while preserving the existing active queue, shuffle and repeat; reuse an existing entry when available |
 | Play Lose Yourself by Eminem next | Native single-song search and insertion after current track, with queue/state checks |
 | Play this song next | Current media-session song reference |
 | Pause/resume/stop/next/previous, shuffle/repeat controls | Existing Google/MetroList media controls; not independently implemented for every phrasing |
 | Shuffle all playlists; liked/recent/downloaded collections | No dedicated aggregate or collection-language route |
 | Add to queue/end; multiple songs; move/remove/clear queue | Not implemented |
-| General song/artist/album play/search, similar/newest/most-listened content | No new module route outside Play next; existing Google provider behavior may vary |
+| Artist/album requests, similar/newest/most-listened content | No dedicated module route; existing Google provider behavior may vary |
 | Like/unlike; conversation/history references | Not implemented beyond the current media-session song reference |
 | Seek, speed, pause after track, selected playlist start song | No new module implementation |
 | Shuffle Rap and play Lose Yourself next in one sentence | Not implemented atomically; use two separate requests |
@@ -22,7 +23,7 @@ Empty/unusable results do not manufacture content. Failed actions keep a bounded
 
 ## Spoken confirmation
 
-Eligible automatic Google replies are correlated with exact current successful local actions. Defaults are `Playing {playlist}` and `Playing {song}{by_artist} next`. Custom templates support playlist/song/artist/author/album/title/action/position/queue_size/shuffle/app and optional by_artist/from_album phrases. Missing metadata is empty.
+Eligible automatic Google replies are correlated with exact current successful local actions. Defaults are `Playing {playlist}`, `Playing {song}{by_artist}` for immediate playback, and `Playing {song}{by_artist} next` for insertion. Custom templates support playlist/song/artist/author/album/title/action/position/queue_size/shuffle/app and optional by_artist/from_album phrases. Missing metadata is empty.
 
 The owner confirmed the0.19 integrated native voice working. This release retains that functional path while removing observation/reporting code. Google's visible/cloud text remains unchanged. Cloud/native synthesis latency and failures are outside the module's control; no Android TTS fallback or fabricated success is used.
 
